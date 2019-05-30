@@ -1,0 +1,16 @@
+//effective goal: to create a predictive probabilistically determined traversal to a set of fixed outcomes
+//eg. a tennis match: there are many sub-outcomes (such as the score, number of sets, etc)
+//but there are only a finite and far smaller set of outcomes: Player 1 wins or Player 2 wins- no in between
+//so suppose we modelled this on a binary tree- at the end of n levels, we would have 2^{n-1} events (assuming each is distinct, ofc)
+//but some k of those nodes converge to outcome #1, 2^{n-1}-k of those converge to outcome #2.
+//now what we want to do instead is that each traversal is unequal- the course of action has a more likely path down one way than another
+//and it is not purely just a product of individual probabilities of each event on the route- one event can converge to the same sub-outcome
+//from a distinct path
+//eg. in the tennis match, a score of 3-3 can be achieved by-
+//1. each take one set P1-P2-P1-P2-P1-P2
+//2. one takes 3, then the other takes 3 P1-P1-P1-P2-P2-P2
+//other intermediate outcomes, like P1 takes 2, P2 takes 1, and then P1 takes 1, P2 takes 2
+//here, the ordering matters in reaching the outcome, but not the outcome itself. 
+//we can try this using BFS algorithm of a graph. 
+//here, we will weight the nodes with some probability, and set that depending on that weight, we select the odds of going down that path
+//very elementary stage- need to build up how we can do this better
